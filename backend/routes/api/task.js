@@ -22,9 +22,21 @@ router.post(
 
     try {
       const user = await User.findById(req.user.id).select("-password");
-
+      function makeId(length) {
+        var result = "";
+        var characters =
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+          result += characters.charAt(
+            Math.floor(Math.random() * charactersLength)
+          );
+        }
+        return result;
+      }
       const newTask = new Task({
         text: req.body.text,
+        taskId: makeId(6),
         dueDate: moment(req.body.dueDate).format("LL"),
         name: user.name,
         user: req.user.id,

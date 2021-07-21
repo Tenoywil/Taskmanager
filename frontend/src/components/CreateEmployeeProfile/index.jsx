@@ -69,7 +69,9 @@ const Index = () => {
         {({ values, errors, touched, handleSubmit }) => (
           <Form>
             <h1>
-              {profile ? "Update Your Profile" : "Create Employee Your Profile"}
+              {Object.keys(profile).length !== 0
+                ? "Update Your Profile"
+                : "Create Employee Your Profile"}
             </h1>
             <>
               <label>
@@ -104,7 +106,9 @@ const Index = () => {
                 {errors.position}
               </div>
             )}
-            <button type="submit">{profile ? "Update" : "Create"}</button>
+            <button type="submit">
+              {Object.keys(profile).length !== 0 ? "Update" : "Create"}
+            </button>
           </Form>
         )}
       </Formik>

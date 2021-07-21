@@ -26,7 +26,7 @@ import { parse, differenceInDays } from "date-fns";
 import moment from "moment";
 import ProfileNetwork from "./helpers/profile/network";
 import TaskNetwork from "./helpers/task/network";
-import { setTasks, setProfiles } from "./globals/profile/index";
+import { setTasks, setProfiles, setProfile } from "./globals/profile/index";
 import { useSelector, useDispatch } from "react-redux";
 
 const App = () => {
@@ -35,6 +35,14 @@ const App = () => {
   const dispatch = useDispatch();
   const display = useSelector(getDisplay);
   const notification = useSelector(getNotification);
+
+  const getAProfile = async () => {
+    const profile = await ProfileNetwork.getCurrentUser(token);
+    if (profile) {
+      dispatch(setProfile(profile));
+    }
+  };
+
   const getProfile = async () => {
     const _profiles = await ProfileNetwork.getAllProfiles(token);
     if (_profiles) {
@@ -56,7 +64,12 @@ const App = () => {
         console.log(dueDate);
         let dayDifference = differenceInDays(now, dueDate);
         console.log(dayDifference > 1);
-        if (dayDifference > 1) {
+        if (
+          dayDifference > 1 &&
+          task.status !== "Completed" &&
+          task.status !== "Not yet Started" &&
+          task.status !== "Inprogress"
+        ) {
           const update = await TaskNetwork.changeTaskStatus(task._id, status);
         }
       });
@@ -68,6 +81,7 @@ const App = () => {
     if (triggerReload) {
       getTasks_all();
       getProfile();
+      getAProfile();
     }
     return () => {
       dispatch(setTriggerTaskReload(false));

@@ -29,18 +29,15 @@ const Index = () => {
       let status = "";
       const check = await TaskNetwork.markTaskIncomplete(token, id);
       const update = await TaskNetwork.changeTaskStatus(id, status);
-      if (check) {
-        dispatch(setTriggerTaskReload(true));
-        dispatch(setTask({}));
-      }
+
+      dispatch(setTriggerTaskReload(true));
+      dispatch(setTask({}));
     } else {
       let status = "Completed";
       const check = await TaskNetwork.markTaskComplete(token, id);
       const update = await TaskNetwork.changeTaskStatus(id, status);
-      if (check) {
-        dispatch(setTriggerTaskReload(true));
-        dispatch(setTask({}));
-      }
+      dispatch(setTriggerTaskReload(true));
+      dispatch(setTask({}));
     }
   };
   const closeWindow = () => {
@@ -131,7 +128,7 @@ const Index = () => {
         <div className="Bottom-main">
           <div className="inner-Bottom-main">
             {tasks?.map((task, i) =>
-              task.status === "Not yet Started" || task.status === "" ? (
+              task.status === "Not yet Started" || !task?.status ? (
                 <TaskBox
                   key={i}
                   markComplete={markComplete}
@@ -256,8 +253,8 @@ const ViewTask = ({
   task: {
     name,
     text,
+    taskId,
     createdAt,
-    completedAt,
     dueDate,
     status,
     _id,
@@ -282,6 +279,9 @@ const ViewTask = ({
     <div className="task-view">
       <div className="task-view-main">
         <div className="inner-view">
+          <div>
+            <p>Task Id:</p> {taskId}
+          </div>
           <div>
             <p>Assigner:</p> {name}
           </div>

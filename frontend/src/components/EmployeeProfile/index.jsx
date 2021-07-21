@@ -25,7 +25,6 @@ const Index = () => {
     const profile = await ProfileNetwork.getCurrentUser(token);
     if (profile) {
       dispatch(setProfile(profile));
-      setShouldFetch(true);
     }
   };
 
@@ -52,7 +51,7 @@ const Index = () => {
   return (
     <div className="main-wrapper">
       <h1>Your Profile</h1>
-      {profile ? (
+      {Object.keys(profile).length !== 0 ? (
         <>
           <div className="profileOne-container">
             <div>
