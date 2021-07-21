@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   getProfile,
   setDefault,
@@ -19,14 +19,6 @@ const Index = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const token = useSelector(getToken);
-  const [fetch, setShouldFetch] = useState(false);
-
-  const getAProfile = async () => {
-    const profile = await ProfileNetwork.getCurrentUser(token);
-    if (profile) {
-      dispatch(setProfile(profile));
-    }
-  };
 
   const deleteProfile = async () => {
     const deleteUser = await ProfileNetwork.deleteCurrentUser(token);
@@ -43,11 +35,7 @@ const Index = () => {
       dispatch(setDisplay(true));
     }
   };
-  useEffect(() => {
-    if (!fetch) {
-      getAProfile();
-    }
-  }, [fetch]);
+
   return (
     <div className="main-wrapper">
       <h1>Your Profile</h1>

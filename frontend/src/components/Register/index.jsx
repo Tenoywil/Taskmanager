@@ -3,6 +3,8 @@ import { Formik, Form, Field } from "formik";
 import { object, string } from "yup";
 import AuthNetwork from "../../helpers/auth/network";
 import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { setDisplay, setNotification } from "../../globals/auth";
 import "./Register.scss";
 
 const defaultFormvalues = {
@@ -25,16 +27,42 @@ const schema = object().shape({
 });
 const Index = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const handleSubmit = async (values) => {
-    if (values.password === values.password2) {
-      const register = await AuthNetwork.registerUser(
-        values.name,
-        values.email,
-        values.password
-      );
-      if (register) {
-        history.push("/create-employee");
+    try {
+      if (values.password === values.password2) {
+        const register = await AuthNetwork.registerUser(
+          values.name,
+          values.email,
+          values.password
+        );
+        if (register) {
+          history.push("/create-employee");
+        }
+      } else {
+        dispatch(
+          setNotification({
+            message: "Passwords need to match.",
+            type: "Fail",
+          })
+        );
+        dispatch(setDisplay(true));
       }
+      dispatch(
+        setNotification({
+          message: "SUCCESS!",
+          type: "SUCCESS",
+        })
+      );
+      dispatch(setDisplay(true));
+    } catch (e) {
+      dispatch(
+        setNotification({
+          message: "Try a different email.",
+          type: "Fail",
+        })
+      );
+      dispatch(setDisplay(true));
     }
   };
   return (
