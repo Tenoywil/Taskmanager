@@ -43,13 +43,13 @@ const Index = () => {
         <>
           <div className="profileOne-container">
             <div>
-              Employee name: <p>{profile?.user?.name}</p>
+              Employee Name: <p>{profile?.user?.name}</p>
             </div>
             <div>
-              Employee email: <p>{profile?.user?.email}</p>
+              Employee Email: <p>{profile?.user?.email}</p>
             </div>
             <div>
-              Employee id: <p>{profile?.user?.idNum}</p>
+              Employee Id: <p>{profile?.user?.idNum}</p>
             </div>
             <div>
               Department: <p>{profile?.department}</p>
