@@ -1,0 +1,148 @@
+.task-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+  width: 100%;
+
+  .top-section {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 10px;
+  }
+  .main {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    background-color: rgba(212, 212, 212, 0.699);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    .top-main {
+      display: flex;
+      justify-content: space-evenly;
+      padding-left: 10px;
+      .inner-top-main {
+        text-justify: left;
+        width: 356px;
+        P {
+          align-self: flex-start;
+          font-weight: bold;
+          margin-left: 10px;
+          margin-top: 20px;
+        }
+      }
+    }
+    .Bottom-main {
+      display: flex;
+      padding-left: 10px;
+      padding-right: 10px;
+      .inner-Bottom-main {
+        margin-top: 10px;
+        height: 400px;
+        width: 356px;
+        padding: 5px;
+        overflow-y: scroll;
+      }
+      margin-bottom: 40px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+  .task-view {
+    position: absolute;
+
+    .task-view-main {
+      position: relative;
+      background-color: grey;
+      z-index: 1;
+      width: 50%;
+      height: fit-content;
+      min-width: 620px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      border-radius: 7px;
+      left: 25%;
+      padding: 20px;
+      .closer {
+        position: absolute;
+        top: 5%;
+        right: 2%;
+        width: 20px;
+        height: 20px;
+      }
+      .inner-view {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        .status-selection {
+          display: flex;
+          flex-direction: column;
+        }
+        small {
+          align-self: center;
+          margin-left: 20px;
+          margin-top: auto;
+          color: rgb(194, 24, 24);
+          text-decoration: underline;
+          &:hover {
+            color: white;
+            font-size: large;
+          }
+        }
+        div {
+          display: flex;
+          flex-direction: row;
+          margin-bottom: 10px;
+          width: 100%;
+        }
+        Label {
+          font-size: 14px;
+          font-weight: bold;
+          display: flex;
+          margin-left: 10px;
+          font-weight: lighter;
+        }
+      }
+
+      p {
+        font-weight: bold;
+      }
+      .btn-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 200px;
+        .btn-delete {
+          background-color: rgb(235, 78, 78);
+        }
+        .btn-complete {
+          &:hover {
+            background-color: rgb(4, 170, 109);
+            color: black;
+          }
+        }
+      }
+    }
+    .box {
+      .card-text {
+        display: flex;
+        flex-wrap: wrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
+}
+button {
+  border: none;
+  padding: 10px;
+}

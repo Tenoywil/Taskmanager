@@ -1,0 +1,36 @@
+.login-main {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 10%;
+  .info-message {
+    margin-top: -30px;
+    padding-left: 2px;
+    a {
+      color: #8598db;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  Label {
+    display: flex;
+    flex-direction: column;
+  }
+  button {
+    border: none;
+    padding: 10px;
+    margin-top: 54px;
+  }
+  h1 {
+    font-size: 30px;
+  }
+  p {
+    margin-bottom: 13px;
+  }
+}

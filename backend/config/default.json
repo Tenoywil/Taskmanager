@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://tenoy123:123tenoy@devconnector.ngoqd.mongodb.net/TaskManager?retryWrites=true&w=majority",
+  "jwtSecret": "secretTokenStuff"
+}

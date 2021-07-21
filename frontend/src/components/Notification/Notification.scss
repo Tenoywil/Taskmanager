@@ -1,0 +1,18 @@
+.notif-container {
+  height: 25px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  &.success {
+    background-color: limegreen;
+  }
+  &.fail {
+    background-color: rgba(255, 0, 0, 0.514);
+  }
+  h2 {
+    font-weight: 10px;
+    font-weight: lighter;
+    color: white;
+  }
+}

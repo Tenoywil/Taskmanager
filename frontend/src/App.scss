@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  font-family: "Montserrat", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+input[type="text" i],
+input[type="password" i],
+input[type="date" i],
+select,
+textarea {
+  background-color: #c4c4c4;
+  border: none;
+  border-radius: 7px;
+  height: 57px;
+  width: 532px;
+  margin-bottom: 44px;
+  padding: 20px;
+  font-size: larger;
+  &.hasErrors {
+    border: 3px solid red;
+  }
+}
+Label {
+  font-size: 14px;
+  font-weight: bold;
+}
+button {
+  background-color: #8598db;
+  font-weight: normal;
+  border-radius: 7px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+
+  &:hover {
+    background-color: rgba(255, 0, 0, 0.514);
+    color: #ffffff;
+  }
+}
+.error {
+  color: red;
+  font-size: 14px;
+  font-weight: normal;
+}
